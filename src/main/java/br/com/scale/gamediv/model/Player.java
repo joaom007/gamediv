@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_player")
 public class Player implements Serializable{
@@ -22,7 +24,7 @@ public class Player implements Serializable{
     private Long id;
     private String name;
 
-
+    @JsonIgnore
     @OneToMany(mappedBy = "player")
     private List<Game> games = new ArrayList<>();
 
@@ -31,6 +33,7 @@ public class Player implements Serializable{
     }
 
     public Player(Long id, String name) {
+        super();
         this.id = id;
         this.name = name;
     }
@@ -42,5 +45,9 @@ public class Player implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-   
+
+    public List<Game> getGames() {
+        return this.games;
+    }
+
 }
