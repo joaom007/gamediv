@@ -1,7 +1,7 @@
 package br.com.scale.gamediv.model;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_game")
 public class Game implements Serializable{
@@ -23,12 +26,17 @@ public class Game implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Time time;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    private Instant init;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
+    private Instant finish;
+    private int nPlay;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "play")
     private List<Play> plays = new ArrayList<>();
-
-    private int nPlay;
 
     @ManyToOne
     @JoinColumn(name = "player_id")
@@ -38,14 +46,14 @@ public class Game implements Serializable{
     public Game() {
     }
 
-    public Game(Long id, Time time, int nPlay, Player player) {
+    public Game(Long id, Instant init, Instant finish, int nPlay, Player player) {
         this.id = id;
-        this.time = time;
+        this.init = init;
+        this.finish = finish;
         this.nPlay = nPlay;
         this.player = player;
     }
-
-
+    
     public Long getId() {
         return this.id;
     }
@@ -54,12 +62,20 @@ public class Game implements Serializable{
         this.id = id;
     }
 
-    public Time getTime() {
-        return this.time;
+    public Instant getInit() {
+        return this.init;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setInit(Instant init) {
+        this.init = init;
+    }
+
+    public Instant getFinish() {
+        return this.finish;
+    }
+
+    public void setFinish(Instant finish) {
+        this.finish = finish;
     }
 
     public int getNPlay() {
@@ -70,12 +86,9 @@ public class Game implements Serializable{
         this.nPlay = nPlay;
     }
 
-    public Player getPlayer() {
-        return this.player;
+    public List<Play> getPlays() {
+        return this.plays;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
+ 
 }
