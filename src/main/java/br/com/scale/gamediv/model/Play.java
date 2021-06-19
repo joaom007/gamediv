@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_game")
+@Table(name = "tb_play")
 public class Play implements Serializable{
 
     private static final long serialVersionUID = 1L;
@@ -20,9 +20,11 @@ public class Play implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private int play;
+
     @ManyToOne
     @JoinColumn(name = "game_id")
-    private int play;
+    private Game game;
 
 
     public Play() {
