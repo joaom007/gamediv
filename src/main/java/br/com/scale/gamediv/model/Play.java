@@ -26,15 +26,15 @@ public class Play implements Serializable{
     @JoinColumn(name = "game_id")
     private Game game;
 
-
     public Play() {
     }
 
-    public Play(Long id, int play) {
+    public Play(Long id, int play, Game game) {
         this.id = id;
         this.play = play;
+        this.game = game;
     }
-
+    
     public Long getId() {
         return this.id;
     }
