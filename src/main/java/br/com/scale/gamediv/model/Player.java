@@ -24,7 +24,7 @@ public class Player implements Serializable{
     private Long id;
     private String name;
 
-    @JsonIgnore
+    
     @OneToMany(mappedBy = "player")
     private List<Game> games = new ArrayList<>();
 

@@ -35,13 +35,12 @@ public class Game implements Serializable{
     private Instant finish;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "play")
-    private List<Play> plays = new ArrayList<>();
-
     @ManyToOne
     @JoinColumn(name = "player_id")
     private Player player;
 
+    @OneToMany(mappedBy = "play")
+    private List<Play> plays = new ArrayList<>();
 
     public Game() {
     }

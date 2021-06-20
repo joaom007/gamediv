@@ -36,10 +36,10 @@ public class TestConfig implements CommandLineRunner{
         Player p1 = new Player(null, "Maria");
         Player p2 = new Player(null, "Silvana");
 
-        Game g1 = new Game(null, Instant.parse("2020-12-20T19:53:07Z"), Instant.parse("2020-12-20T21:53:07Z"), p1);
-        Game g2 = new Game(null, Instant.parse("2020-12-20T19:53:07Z"), Instant.now(), p2);
-        Game g3 = new Game(null, Instant.parse("2020-12-20T19:53:07Z"), Instant.now(), p1);
-        Game g4 = new Game(null, Instant.parse("2020-12-20T19:53:07Z"), Instant.now(), p2);
+        Game g1 = new Game(null, Instant.parse("2021-06-18T19:53:07Z"), Instant.parse("2021-06-20T18:53:07Z"), p1);
+        Game g2 = new Game(null, Instant.parse("2021-06-18T19:53:07Z"), Instant.now(), p2);
+        Game g3 = new Game(null, Instant.parse("2021-06-18T19:53:07Z"), Instant.now(), p1);
+        Game g4 = new Game(null, Instant.parse("2021-06-18T19:53:07Z"), Instant.now(), p2);
 
         Play py1 = new Play(null, 12, g1);
         Play py2 = new Play(null, 15, g1);
