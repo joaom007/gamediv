@@ -47,12 +47,14 @@ public class PlayerController {
         return ResponseEntity.created(uri).body(obj);
     }
 
+    //return cod 204 http
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
 
+    //Return default cod 200 http
     @PutMapping(value = "/{id}")
     public ResponseEntity<Player> update(@PathVariable Long id, @RequestBody Player obj) {
         obj = service.update(id, obj);
