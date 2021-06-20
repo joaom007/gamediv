@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import br.com.scale.gamediv.model.Player;
@@ -30,7 +31,12 @@ public class PlayerService {
     }
 
     public void delete(Long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+          } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+          }
+        
     }
 
     public Player update(Long id, Player obj) {
