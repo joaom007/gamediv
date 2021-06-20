@@ -57,7 +57,7 @@ public class PlayService {
     }
 
     private void updateData(Play entity, Play obj) {
-        entity.setPlay(obj.getPlay());
+        entity.setShot(obj.getShot());
     }
 }
 

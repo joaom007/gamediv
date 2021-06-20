@@ -33,13 +33,13 @@ public class Game implements Serializable{
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant finish;
-
-    @JsonIgnore
+ 
     @ManyToOne
     @JoinColumn(name = "player_id")
     private Player player;
 
-    @OneToMany(mappedBy = "play")
+    @JsonIgnore
+    @OneToMany(mappedBy = "game")
     private List<Play> plays = new ArrayList<>();
 
     public Game() {
@@ -91,8 +91,14 @@ public class Game implements Serializable{
 
     //method for calculate time of game
     public Long getGameSeconds() {
-        Duration d = Duration.between(init, finish);
-        return d.getSeconds();
+        if ((finish != null)) {
+            Duration d = Duration.between(init, finish);
+            return d.getSeconds();
+        } else {
+            return 0L;
+        }
+        
+        
     }
 
  

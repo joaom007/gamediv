@@ -10,8 +10,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "tb_play")
 public class Play implements Serializable{
@@ -22,9 +20,8 @@ public class Play implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int play;
+    private int shot;
 
-    // @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "game_id")
     private Game game;
@@ -32,10 +29,10 @@ public class Play implements Serializable{
     public Play() {
     }
 
-    public Play(Long id, int play, Game game) {
+    public Play(Long id, int shot, Game game) {
         super();
         this.id = id;
-        this.play = play;
+        this.shot = shot;
         this.game = game;
     }
     
@@ -47,12 +44,12 @@ public class Play implements Serializable{
         this.id = id;
     }
 
-    public int getPlay() {
-        return this.play;
+    public int getShot() {
+        return this.shot;
     }
 
-    public void setPlay(int play) {
-        this.play = play;
+    public void setShot(int shot) {
+        this.shot = shot;
     }
 
     public Game getGame() {
