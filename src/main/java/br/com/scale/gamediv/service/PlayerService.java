@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.scale.gamediv.model.Player;
 import br.com.scale.gamediv.repository.PlayerRepository;
+import br.com.scale.gamediv.service.exception.ResourceNotFoundException;
 
 @Service
 public class PlayerService {
@@ -21,7 +22,7 @@ public class PlayerService {
     
     public Player findById(Long id) {
         Optional<Player> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
 
     public Player insert(Player obj) {
