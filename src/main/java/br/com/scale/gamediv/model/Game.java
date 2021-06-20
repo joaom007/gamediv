@@ -1,6 +1,7 @@
 package br.com.scale.gamediv.model;
 
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,6 @@ public class Game implements Serializable{
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
     private Instant finish;
-    private int nPlay;
 
     @JsonIgnore
     @OneToMany(mappedBy = "play")
@@ -46,11 +46,11 @@ public class Game implements Serializable{
     public Game() {
     }
 
-    public Game(Long id, Instant init, Instant finish, int nPlay, Player player) {
+    public Game(Long id, Instant init, Instant finish, Player player) {
+        super();
         this.id = id;
         this.init = init;
         this.finish = finish;
-        this.nPlay = nPlay;
         this.player = player;
     }
     
@@ -78,16 +78,22 @@ public class Game implements Serializable{
         this.finish = finish;
     }
 
-    public int getNPlay() {
-        return this.nPlay;
-    }
-
-    public void setNPlay(int nPlay) {
-        this.nPlay = nPlay;
-    }
-
     public List<Play> getPlays() {
         return this.plays;
+    }
+
+    public Player getPlayer() {
+        return this.player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    //method for calculate time of game
+    public Long getGameSeconds() {
+        Duration d = Duration.between(init, finish);
+        return d.getSeconds();
     }
 
  

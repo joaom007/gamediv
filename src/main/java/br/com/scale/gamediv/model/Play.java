@@ -30,6 +30,7 @@ public class Play implements Serializable{
     }
 
     public Play(Long id, int play, Game game) {
+        super();
         this.id = id;
         this.play = play;
         this.game = game;
@@ -50,5 +51,14 @@ public class Play implements Serializable{
     public void setPlay(int play) {
         this.play = play;
     }
+
+    public Game getGame() {
+        return this.game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+    
     
 }
