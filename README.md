@@ -31,10 +31,10 @@
 
 ## Repostas as requisições
 
-Requisição GET - End points localhost:8081/players e localhost:8081/players/id retorno código 200 ok e 404 para não encontrado
-Requisição POST - End point localhost:8081/players retorno código 201 com retorno do objeto criado.
-Requisição DELETE - End point localhost:8081/players/id retorno código 204 ok, 404 para não encontrado e 400 para bad requests que poderiam criar inconsistencia no banco.
-Requisição PUT - End point localhost:8081/players/id código 200 com retorno do objeto alterado e 404 para não encontrado.
+* Requisição GET - End points localhost:8081/players e localhost:8081/players/id retorno código 200 ok e 404 para não encontrado
+* Requisição POST - End point localhost:8081/players retorno código 201 com retorno do objeto criado.
+* Requisição DELETE - End point localhost:8081/players/id retorno código 204 ok, 404 para não encontrado e 400 para bad requests que poderiam criar inconsistência no banco.
+* Requisição PUT - End point localhost:8081/players/id código 200 com retorno do objeto alterado e 404 para não encontrado.
 
 
 
